@@ -488,8 +488,6 @@ SendCoinsEntry* SendCoinsDialog::addEntry()
     connect(entry, SIGNAL(removeEntry(SendCoinsEntry*)), this, SLOT(removeEntry(SendCoinsEntry*)));
     connect(entry, SIGNAL(payAmountChanged()), this, SLOT(coinControlUpdateLabels()));
 
-    updateTabsAndLabels();
-
     // Focus the field, so that entry can start immediately
     entry->clear();
     entry->setFocus();
@@ -498,6 +496,7 @@ SendCoinsEntry* SendCoinsDialog::addEntry()
     QScrollBar* bar = ui->scrollArea->verticalScrollBar();
     if (bar)
         bar->setSliderPosition(bar->maximum());
+    updateTabsAndLabels();
     return entry;
 }
 
